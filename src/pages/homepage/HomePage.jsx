@@ -10,12 +10,14 @@ function HomePage() {
     <>
       <Hero />
       <Trend/>
-      <div className={home.home_blogs_div}>
-       
+      <div className={home.home_blogs_div_block}>
           <Blogs/>
           <BlogsFilter/>
-        
-
+      </div>
+      <div className={home.home_blogs_div_none}>
+         <BlogsFilter/>
+          <Blogs/>
+         
       </div>
     </>
   );

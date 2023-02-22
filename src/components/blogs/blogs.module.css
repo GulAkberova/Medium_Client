@@ -63,3 +63,30 @@
     height: 100%;
     object-fit: cover;
 }
+@media only screen and (max-width: 550px) {
+    .blogs_mini_text_img img{
+       width: 30px;
+       height: 30px;
+    }
+    .blogs_mini_text h2{
+        font-size: 17px;
+    }
+    .blogs_mini_text p{
+        font-size: 12px;
+    }
+    .blogs_mini_img{
+        height: 160px;
+    }
+    .blogs_mini_text_read div button{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .blogs_big_div{
+        width: 100%;
+       
+    }
+   
+   
+}
