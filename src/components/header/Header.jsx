@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Login from '../../pages/loginpage/Login';
 import nav from './nav.module.css'
 function Header() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
+  const [colorChange, setColorchange] = useState(false);
+  const changeNavbarColor = () =>{
+    if(window.scrollY >= 495){
+      setColorchange(true);
+    }
+    else{
+      setColorchange(false);
+    }
+ };
+ window.addEventListener('scroll', changeNavbarColor);
   return (
     <>
-    <header className={nav.nav_big_div}>
+    <header className={colorChange ? `${nav.nav_big_div} ${nav.nav_Color}` :  `${nav.nav_big_div}`}>
         <h1><NavLink to={'/'}>MEDIUM</NavLink></h1>
         <div>
             <ul>

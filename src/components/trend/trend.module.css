@@ -51,9 +51,7 @@
     }
 }
 @media only screen and (max-width: 768px) {
-    .trend_div{
-        width: 100%;
-    }
+  
     .trend_div_img img{
         width: 35px;
         height: 35px;
@@ -62,5 +60,12 @@
         font-size: 40px;
         padding: 10px 0px;
     }
+
+}
+@media only screen and (max-width: 600px) {
+    .trend_div{
+        width: 100%;
+    }
+  
 }
 
