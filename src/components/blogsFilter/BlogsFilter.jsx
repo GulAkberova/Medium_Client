@@ -1,8 +1,10 @@
 import React from 'react'
-
+import blogsFilter from './blogsfilter.module.css'
 function BlogsFilter() {
   return (
-    <div>BlogsFilter</div>
+    <section className={blogsFilter.blogsFilter_big_div}>
+
+    </section>
   )
 }
 
