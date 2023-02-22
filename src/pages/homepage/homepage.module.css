@@ -1,0 +1,6 @@
+.home_blogs_div{
+    padding: 40px 80px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
