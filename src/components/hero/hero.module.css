@@ -1,0 +1,39 @@
+.hero_big_div{
+    background-color: #FFC017;
+    padding: 80px;
+}
+
+.hero_big_div div h1{
+    font-size: 60px;
+    font-weight: 700;
+
+}
+.hero_big_div div p{
+    padding: 20px 0px;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 500;
+}
+.hero_big_div div button{
+    padding: 13px 30px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .hero_big_div div p{
+        font-size: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    .hero_big_div {
+        padding: 80px 30px;
+
+    }
+   
+
+}
+
