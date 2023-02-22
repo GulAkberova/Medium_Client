@@ -4,26 +4,50 @@
 }
 
 .hero_big_div div h1{
-    font-size: 60px;
+    font-size: 106px;
     font-weight: 700;
-
+    letter-spacing: 0.09em;
+    /* line-height: 74px; */
 }
 .hero_big_div div p{
-    padding: 20px 0px;
+    padding: 40px 0px;
     font-size: 30px;
     line-height: 30px;
     font-weight: 500;
+    letter-spacing: 0.06em;
+
 }
 .hero_big_div div button{
-    padding: 13px 30px;
-    border-radius: 20px;
+    padding: 13px 40px;
+    border-radius: 30px;
     background-color: black;
     color: white;
+    border: 1px solid black;
+    transition: 0.5s;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    letter-spacing: 0.06em;
+
+
+}
+.hero_big_div div button:hover{
+    background-color: transparent;
+    color: black;
+
 }
 
 @media only screen and (max-width: 600px) {
     .hero_big_div div p{
         font-size: 20px;
+    }
+
+}
+@media only screen and (max-width: 768px) {
+    .hero_big_div div h1{
+        font-size: 70px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
     }
 
 }
@@ -33,6 +57,7 @@
         padding: 80px 30px;
 
     }
+   
    
 
 }

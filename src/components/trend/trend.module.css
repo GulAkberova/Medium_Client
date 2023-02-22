@@ -1,0 +1,42 @@
+.trend_big_div{
+   border-bottom: 1px solid gray;
+   padding: 40px 80px;
+}
+.trend_mini_div{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.trend_div{
+    width: 33%;
+    display: flex;
+}
+.trend_div h1{
+    font-size: 50px;
+    color: rgba(128, 128, 128, 0.701);
+}
+.trend_div_text{
+    display: flex;
+    flex-direction: column;
+    padding: 25px 30px;
+}
+.trend_div_img{
+  display: flex;
+  align-items: center;
+}
+.trend_div_img img{
+    border-radius: 100%;
+}
+.trend_div_img span{
+    font-weight: 600;
+    padding:0px 10px;
+}
+.trend_div_text h2{
+    font-size: 19px;
+    padding: 10px 0px;
+
+}
+.trend_div_read span{
+    padding: 10px 0px;
+    color: rgb(101, 100, 100);
+}

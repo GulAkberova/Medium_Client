@@ -19,17 +19,35 @@
     justify-content: center;
 }
 .login_mini_div div button{
-    padding: 15px 90px;
+    padding: 10px 90px;
     border-radius: 20px;
     border: 1px solid rgba(155, 153, 153, 0.548);
     background-color: white;
     margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+     transition: 0.5s;
+}
+.login_mini_div div button:hover{
+    border: 1px solid rgba(0, 0, 0, 0.509);
 }
 .login_mini_div p{
     font-size: 12px;
-    color: rgba(128, 128, 128, 0.683);
+    color: rgba(128, 128, 128, 0.856);
     padding: 20px 0px;
 }
 .login_mini_div h5{
     padding: 30px 0px;
+}
+.login_mini_div h5 a{
+    color: green;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.login_mini_div p a{
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgba(128, 128, 128, 0.975);
+
 }

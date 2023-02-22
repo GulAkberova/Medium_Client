@@ -1,31 +1,47 @@
 .nav_big_div{
     background-color: #FFC017;
-    padding: 30px 80px;
+    padding: 25px 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
+}
+.nav_big_div h1 a{
+    color: black;
+    font-weight: 700;
 }
 .nav_big_div div{
     display: flex;
     align-items: center;
 }
 .nav_big_div div button{
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: black;
     padding: 10px 20px;
+    font-size: 17px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.nav_big_div div button:hover{
+    background-color: transparent;
 }
 .nav_big_div div button a{
     color: white;
+}
+.nav_big_div div button:hover a{
+    color: black;
 }
 .nav_big_div ul{
     display: flex;
 }
 .nav_big_div ul li {
-    margin: 0px 20px;
+    margin: 0px 17px;
 }
 .nav_big_div ul li a{
     color: black;
+    font-size: 17px;
+    letter-spacing: 0.05em;
 }
 @media only screen and (max-width: 600px) {
 
