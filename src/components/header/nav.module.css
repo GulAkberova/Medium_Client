@@ -60,7 +60,7 @@
 
 @media only screen and (max-width: 992px) {
     .nav_big_div {
-        padding: 40px;
+        padding: 40px 30px;
     }
 
 }

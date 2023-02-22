@@ -40,3 +40,27 @@
     padding: 10px 0px;
     color: rgb(101, 100, 100);
 }
+
+
+@media only screen and (max-width: 992px) {
+    .trend_div{
+        width: 49%;
+    }
+    .trend_big_div{
+        padding: 40px 30px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .trend_div{
+        width: 100%;
+    }
+    .trend_div_img img{
+        width: 35px;
+        height: 35px;
+    }
+    .trend_div h1{
+        font-size: 40px;
+        padding: 10px 0px;
+    }
+}
+
