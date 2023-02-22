@@ -1,5 +1,6 @@
 .blogsFilter_big_div{
     width: 32%;
+    height: max-content;
 }
 .blogsFilter_mini_div{
     border-bottom: 1px solid rgba(148, 147, 147, 0.781);
@@ -34,6 +35,13 @@
         width: 100%;
     
     }
-   
+}
+@media (min-width: 992px)  and (max-width: 1900px) {
+    .blogsFilter_big_div{
+        position: sticky;
+        top: 130px;
+        left: 0;
+    }
+  
    
 }
