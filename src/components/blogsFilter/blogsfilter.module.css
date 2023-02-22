@@ -1,5 +1,30 @@
 .blogsFilter_big_div{
-    width: 35%;
-    height: 200px;
-    border: 1px solid black;
+    width: 32%;
+}
+.blogsFilter_mini_div{
+    border-bottom: 1px solid rgba(148, 147, 147, 0.781);
+    padding: 15px 0px 25px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.blogsFilter_mini_div a{
+    border: 1px solid rgba(141, 139, 139, 0.493);
+    padding: 6px 14px;
+    border-radius: 3px;
+    color: rgb(96, 95, 95);
+    margin: 0px 10px 10px 0px;
+}
+.blogsFilter_mini_div_help{
+    width: 90%;
+    padding: 25px 0px 25px 0px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.blogsFilter_mini_div_help a{
+    padding: 3px 6px;
+    border-radius: 3px;
+    color: rgb(96, 95, 95);
+    margin: 0px 10px 10px 0px;
+
 }
