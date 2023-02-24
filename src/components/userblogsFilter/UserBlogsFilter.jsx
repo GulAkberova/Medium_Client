@@ -85,7 +85,23 @@ function UserBlogsFilter() {
       </div>
 
       </div>
+      <span>See more suggestions</span>
       
+
+     </div>
+     <div className={blogs.blogsFilter_read_div}>
+      <h3>Reading list</h3>
+      <p>Click the <i class="fa-regular fa-bookmark"></i>  on any story to easily add it to your reading list or a custom list that you can share.</p>
+      <div>
+        <a>Help</a>
+        <a>Status</a>
+        <a>Help</a>
+        <a>Status</a>
+        <a>Help</a>
+        <a>Status</a>
+        <a>Help</a>
+        <a>Status</a>
+      </div>
 
      </div>
      
