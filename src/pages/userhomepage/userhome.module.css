@@ -6,13 +6,8 @@
 
 @media only screen and (max-width: 992px) {
     .home_blogs_div_block{
-        display: none;
-        padding: 60px 30px;
+        padding: 60px 10px;
     }
-    .home_blogs_div_none{
-        display: block;
-        padding: 60px 30px;
-
-    }
+ 
    
 }

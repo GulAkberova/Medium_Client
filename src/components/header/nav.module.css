@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
 }
-.nav_big_div div button{
+.btn1{
     border-radius: 30px;
     background-color: black;
     padding: 10px 20px;
@@ -30,13 +30,13 @@
     cursor: pointer;
     transition: 0.5s;
 }
-.nav_big_div div button:hover{
+.btn1:hover{
     background-color: transparent;
 }
-.nav_big_div div button a{
+.btn1 a{
     color: white;
 }
-.nav_big_div div button:hover a{
+.btn1:hover a{
     color: black;
 }
 .nav_big_div ul{
@@ -49,6 +49,16 @@
     color: black;
     font-size: 17px;
     letter-spacing: 0.05em;
+}
+.btn2{
+    background-color: #01579B;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #01579B;
+    border-radius: 100%;
+    margin: 0px 5px;
+    cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
 

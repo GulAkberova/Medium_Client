@@ -28,8 +28,11 @@ function Header() {
                 <li><NavLink onClick={handleOpen}>Sign in</NavLink></li>
 
             </ul>
-            <button>
+            <button className={nav.btn1}>
                 <NavLink >Get started</NavLink>
+            </button>
+            <button className={nav.btn2}>
+              Gul
             </button>
         </div>
     </header>
