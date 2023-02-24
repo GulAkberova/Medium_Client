@@ -6,6 +6,7 @@ function Header() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const [colorChange, setColorchange] = useState(false);
+  const [color, changeColor] = useState("#FFC017");
   const changeNavbarColor = () =>{
     if(window.scrollY >= 495){
       setColorchange(true);
@@ -17,13 +18,13 @@ function Header() {
  window.addEventListener('scroll', changeNavbarColor);
   return (
     <>
-    <header className={colorChange ? `${nav.nav_big_div} ${nav.nav_Color}` :  `${nav.nav_big_div}`}>
-        <h1><NavLink to={'/'}>MEDIUM</NavLink></h1>
+    <header style={{ background: color }} className={colorChange ? `${nav.nav_big_div} ${nav.nav_Color}` :  `${nav.nav_big_div}`}>
+        <h1><NavLink to={'/'} >MEDIUM</NavLink></h1>
         <div>
             <ul>
                 <li><NavLink >Our Story</NavLink></li>
-                <li><NavLink >Membership</NavLink></li>
-                <li><NavLink >Write</NavLink></li>
+                <li><NavLink to='/member' >Membership</NavLink></li>
+                <li><NavLink>Write</NavLink></li>
                 <li><NavLink onClick={handleOpen}>Sign in</NavLink></li>
 
             </ul>

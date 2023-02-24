@@ -6,6 +6,7 @@ import PrivateLayout from "../layout/PrivateLayout";
 import PublicLayout from "../layout/PublicLayout";
 import HomePage from "../pages/homepage/HomePage";
 import Login from "../pages/loginpage/Login";
+import UserHome from "../pages/userhomepage/UserHome";
 
 function AllRoute() {
   return (
@@ -16,7 +17,11 @@ function AllRoute() {
           {/* <Route path="/login" element={<Login />} /> */}
         </Route>
 
-        <Route element={<PrivateLayout />} />
+        <Route element={<PrivateLayout />} >
+          <Route path='/home' element={<UserHome/>} />
+
+
+        </Route>
       </Routes>
     </>
   );

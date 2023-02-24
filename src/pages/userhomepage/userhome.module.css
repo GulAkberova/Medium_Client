@@ -1,0 +1,24 @@
+.home_blogs_div_block{
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+}
+.home_blogs_div_none{
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    display: none;
+
+}
+@media only screen and (max-width: 992px) {
+    .home_blogs_div_block{
+        display: none;
+        padding: 60px 30px;
+    }
+    .home_blogs_div_none{
+        display: block;
+        padding: 60px 30px;
+
+    }
+   
+}
