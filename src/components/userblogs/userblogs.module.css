@@ -1,5 +1,6 @@
 .blogs_big_div{
     width: 60%;
+    padding: 60px 0px;
 }
 .blogs_header_div{
     color: gray;
@@ -85,10 +86,12 @@
 }
 .blogsFilter_big_div{
     width: 32%;
-    height: max-content;
+    /* height: max-content; */
+    padding: 60px 0px 0px 40px;
+    height: 100vh;
+    border-left: 1px solid rgba(151, 150, 150, 0.594);
 }
 .blogsFilter_mini_div{
-    border-bottom: 1px solid rgba(148, 147, 147, 0.781);
     padding: 15px 0px 25px 0px;
     display: flex;
     flex-wrap: wrap;
@@ -114,22 +117,62 @@
     margin: 0px 10px 10px 0px;
 
 }
-
+.blogsFilter_info_div{
+    padding-bottom: 15px;
+}
+.blogsFilter_info_div_img{
+    display: flex;
+    align-items: center;
+}
+.blogsFilter_info_div_img img{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+.blogsFilter_info_div_img p{
+    font-size: 14px;
+    padding-left: 10px;
+}
+.blogsFilter_info_divs h3{
+  padding-bottom: 20px;
+}
+.blogsFilter_info_div h4{
+    padding: 10px 0px;
+}
+.blogsFilter_info_divs span{
+    font-size: 14px;
+    color: green;
+}
+.blogsFilter_recommend_div{
+    padding: 50px 0px 30px 0px;
+}
+.blogsFilter_info_div_follow{
+    display: flex;
+    padding: 10px 0px 10px 30px;
+}
+.blogsFilter_info_div_img h5{
+    padding: 0px 10px;
+}
+.blogsFilter_info_div_follow button{
+    padding: 1px 15px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.blogsFilter_info_div_follow p{
+    font-size: 14px;
+    padding-right: 10px;
+    color: gray;
+}
 @media only screen and (max-width: 992px) {
     .blogsFilter_big_div{
-        width: 100%;
+        display: none;
     
     }
 }
-@media (min-width: 992px)  and (max-width: 1900px) {
-    .blogsFilter_big_div{
-        position: sticky;
-        top: 130px;
-        left: 0;
-    }
-  
-   
-}
+
 @media only screen and (max-width: 550px) {
     .blogs_mini_text_img img{
        width: 30px;
