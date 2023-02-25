@@ -1,0 +1,22 @@
+.follow_bigdiv{
+    padding: 40px 0px;
+}
+.follow_minidiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+.follow_minidiv div{
+    display: flex;
+    align-items: center;
+}
+.follow_minidiv div img{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+.follow_minidiv div p{
+    color: rgb(70, 70, 70);
+    padding-left: 5px;
+}

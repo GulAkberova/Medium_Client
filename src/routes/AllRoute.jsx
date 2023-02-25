@@ -8,6 +8,7 @@ import BlogDetailPage from "../pages/blogdetailpage/BlogDetailPage";
 import HomePage from "../pages/homepage/HomePage";
 import Login from "../pages/loginpage/Login";
 import UserHome from "../pages/userhomepage/UserHome";
+import Writer from "../pages/writerpage/Writer";
 
 function AllRoute() {
   return (
@@ -21,6 +22,7 @@ function AllRoute() {
         <Route element={<PrivateLayout />} >
           <Route path='/home' element={<UserHome/>} />
           <Route path="/blogsdetail" element={<BlogDetailPage/>}/>
+          <Route path="/writer" element={<Writer/>}/>
 
 
         </Route>
