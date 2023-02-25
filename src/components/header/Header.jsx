@@ -13,8 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import nav from './nav.module.css'
-import MenuDropdown from '../menuItem/MenuDropdown';
 function Header() {
   const [open1, setOpen1] = React.useState(false);
   const handleOpen = () => setOpen1(true);
@@ -105,7 +105,7 @@ const handleClose = () => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+          <PersonOutlineIcon/> Profile
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Avatar /> My account
