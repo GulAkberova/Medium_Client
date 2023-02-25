@@ -3,13 +3,19 @@ import Blogs from '../../components/blogs/Blogs'
 import BlogsFilter from '../../components/blogsFilter/BlogsFilter'
 import UserBlogs from '../../components/userblogs/UserBlogs'
 import UserBlogsFilter from '../../components/userblogsFilter/UserBlogsFilter'
-import home from './userhome.module.css'
+import detail from '../blogdetailpage/blogdetail.module.css'
 function UserHome() {
   return (
     <>
-          <div className={home.home_blogs_div_block}>
+          <div className={detail.detail_bigdiv}>
+          <div className={detail.detail_blogs}>
           <UserBlogs/>
-          <UserBlogsFilter/>
+          </div>
+   <div className={detail.detail_writer}>
+   <UserBlogsFilter/>
+   </div>
+
+
       </div>
    
       </>

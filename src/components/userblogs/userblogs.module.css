@@ -1,7 +1,7 @@
-.blogs_big_div{
+/* .blogs_big_div{
     width: 60%;
     padding: 60px 0px;
-}
+} */
 .blogs_header_div{
     color: gray;
 
@@ -85,7 +85,7 @@
     object-fit: cover;
 }
 .blogsFilter_big_div{
-    width: 32%;
+    /* width: 32%; */
     height: max-content;
     padding: 60px 0px 30px 40px;
     border-left: 1px solid rgba(151, 150, 150, 0.594);

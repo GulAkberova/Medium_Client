@@ -105,10 +105,10 @@ const handleClose = () => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <PersonOutlineIcon/> Profile
+        <Avatar />Profile
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+          <Avatar /> <NavLink to='/save'>Library</NavLink>
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
