@@ -1,16 +1,13 @@
 .detail_bigdiv{
-    border: 2px solid black;
     display: flex;
     justify-content: space-between;
 }
 .detail_blogs{
     width: 60%;
-    border: 2px solid red;
     padding: 60px 80px;
 }
 .detail_writer{
     width: 32%;
-    border: 2px solid green;
     padding: 60px 40px;
 }
 .blog_writer_header{
@@ -57,4 +54,40 @@
 .blog_detail_header_img{
     text-align: center;
     padding: 10px 0px;
+}
+
+.blogs_writer_bigdiv img{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+
+}
+.blogs_writer_bigdiv h3{
+    padding-top: 10px;
+}
+.blogs_writer_bigdiv span{
+    color: rgb(94, 91, 91);
+}
+.blogs_writer_bigdiv p{
+    padding: 20px 0px;
+    color: rgb(83, 83, 83);
+}
+.blogs_writer_btn1{
+    padding: 7px 20px;
+    border-radius: 20px;
+    background-color:#496AEC ;
+    color: white;
+    border: 1px solid #496AEC;
+    cursor: pointer;
+}
+.blogs_writer_btn2{
+    background-color:#496AEC ;
+    border: 1px solid #496AEC;
+    color: white;
+    border-radius: 100px;
+    padding: 7px;
+    margin-left: 6px;
+    cursor: pointer;
+
+
 }
