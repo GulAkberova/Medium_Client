@@ -7,7 +7,7 @@ function BlogDetailPage() {
   <section className={detail.detail_bigdiv}>
    <div className={detail.detail_blogs}>
    <BlogsDetail/>
-   
+
    </div>
    <div className={detail.detail_writer}>
    <BlogsWriter/>

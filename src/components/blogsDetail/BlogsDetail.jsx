@@ -50,6 +50,16 @@ function BlogsDetail() {
       <h3>#2 — Filling the whole screen</h3>
       <p>Sometimes little doesn’t mean bad. When some web pages end up with a minimal amount of content, it’s not always wrong — the main thing is to distribute it evenly. Conversely, some webmasters are wary of free space and try to clutter it up by choosing larger fonts and stretching banners and images. It often turns out to be ridiculous. Don’t be like these webmasters, leave some space if there is not much content.</p>
     </div>
+    <div className={detail.follow_div}>
+      <ul>
+        <li><i class="fa-solid fa-hand"></i> 17</li>
+        <li>|</li>
+        <li><i class="fa-regular fa-comment"></i></li>
+        <li>|</li>
+        <li>...</li>
+      </ul>
+
+</div>
     
     </>
   )

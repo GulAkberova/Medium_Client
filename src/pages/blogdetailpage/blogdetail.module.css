@@ -95,3 +95,21 @@
     padding: 20px 17px 30px 17px;
     font-size: 25px;
 }
+.follow_div{
+    padding: 3px 14px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.follow_div ul{
+    display: flex;
+}
+.follow_div ul li{
+    padding: 10px;
+}
