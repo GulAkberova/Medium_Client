@@ -55,7 +55,7 @@ const handleClose = () => {
 
             </ul>
             <button className={nav.btn1}>
-                <NavLink >Get started</NavLink>
+                <NavLink to='/register'>Get started</NavLink>
             </button>
             <Tooltip title="Account settings">
           <IconButton

@@ -7,6 +7,7 @@ import PublicLayout from "../layout/PublicLayout";
 import BlogDetailPage from "../pages/blogdetailpage/BlogDetailPage";
 import HomePage from "../pages/homepage/HomePage";
 import Login from "../pages/loginpage/Login";
+import Register from "../pages/registerpage/Register";
 import Save from "../pages/savedpage/Save";
 import UserHome from "../pages/userhomepage/UserHome";
 import Writer from "../pages/writerpage/Writer";
@@ -25,6 +26,7 @@ function AllRoute() {
           <Route path="/blogsdetail" element={<BlogDetailPage/>}/>
           <Route path="/writer" element={<Writer/>}/>
           <Route path="/save" element={<Save/>}/>
+          <Route path="/register" element={<Register/>}/>
 
 
         </Route>
