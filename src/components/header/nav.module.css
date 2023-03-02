@@ -1,6 +1,5 @@
 .nav_big_div{
     width: 100%;
-    background-color: #FFC017;
     padding: 25px 80px;
     display: flex;
     justify-content: space-between;
@@ -9,10 +8,8 @@
     position: sticky;
     top: 0;
 }
-.nav_Color{
-    background-color: white;
-   
-}
+
+
 .nav_big_div h1 a{
     color: black;
     font-weight: 700;

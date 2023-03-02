@@ -5,6 +5,7 @@ const initialState={
     token:null,
     posts:[]
 }
+console.log('init',initialState.token)
 
 export const authSlice=createSlice({
     name:"auth",
@@ -13,6 +14,7 @@ export const authSlice=createSlice({
         setLogin: (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
+            console.log('init tiken', state.token)
           },
           setLogout: (state) => {
             state.user = null;
@@ -27,6 +29,7 @@ export const authSlice=createSlice({
           },
           setPosts: (state, action) => {
             state.posts = action.payload.posts;
+            // console.log(state.posts)
           },
           setPost: (state, action) => {
             const updatedPosts = state.posts.map((post) => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Login from '../../pages/loginpage/Login';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -15,7 +15,11 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import nav from './nav.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogout } from '../../slice';
 function Header() {
+  let auth=(useSelector(state=>state.authReducer))
+  console.log('isauth',auth.token)
   const [open1, setOpen1] = React.useState(false);
   const handleOpen = () => setOpen1(true);
 
@@ -41,10 +45,97 @@ const handleClick = (event) => {
 const handleClose = () => {
   setAnchorEl(null);
 };
+const dispatch= useDispatch()
+const navigate= useNavigate()
+const handleCloseLogout = () => {
+  
+  dispatch(setLogout())
+  navigate('/')
+};
 
   return (
     <>
-    <header style={{ background: color }} className={colorChange ? `${nav.nav_big_div} ${nav.nav_Color}` :  `${nav.nav_big_div}`}>
+    {
+      auth.token ?  <header style={{ background: "white" }}  className={ `${nav.nav_big_div}` }>
+      <h1><NavLink to={'/home'} >MEDIUM</NavLink></h1>
+      <div>
+        <h4><NavLink to={'/write'}>Write</NavLink></h4>
+         
+          <Tooltip title="Account settings">
+        <IconButton
+          onClick={handleClick}
+          size="small"
+          sx={{ ml: 2 }}
+          aria-controls={open ? 'account-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+        >
+          <Avatar sx={{ width: 32, height: 32 }}>G</Avatar>
+        </IconButton>
+      </Tooltip>
+      <Menu
+      anchorEl={anchorEl}
+      id="account-menu"
+      open={open}
+      onClose={handleClose}
+      onClick={handleClose}
+      PaperProps={{
+        elevation: 0,
+        sx: {
+          overflow: 'visible',
+          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+          mt: 1.5,
+          '& .MuiAvatar-root': {
+            width: 32,
+            height: 32,
+            ml: -0.5,
+            mr: 1,
+          },
+          '&:before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            right: 14,
+            width: 10,
+            height: 10,
+            bgcolor: 'background.paper',
+            transform: 'translateY(-50%) rotate(45deg)',
+            zIndex: 0,
+          },
+        },
+      }}
+      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+    >
+      <MenuItem onClick={handleClose}>
+      <Avatar /><NavLink to='/profile'>Profile</NavLink>
+      </MenuItem>
+      <MenuItem onClick={handleClose}>
+        <Avatar /> <NavLink to='/save'>Library</NavLink>
+      </MenuItem>
+      <Divider />
+      <MenuItem onClick={handleClose}>
+        <ListItemIcon>
+          <PersonAdd fontSize="small" />
+        </ListItemIcon>
+        Add another account
+      </MenuItem>
+      <MenuItem onClick={handleClose}>
+        <ListItemIcon>
+          <Settings fontSize="small" />
+        </ListItemIcon>
+        Settings
+      </MenuItem>
+      <MenuItem onClick={handleCloseLogout}>
+        <ListItemIcon>
+          <Logout fontSize="small" />
+        </ListItemIcon>
+        Logout
+      </MenuItem>
+    </Menu>
+      </div>
+  </header> :  <header style={{ background: "#FFC017" }} className={ `${nav.nav_big_div}` }>
         <h1><NavLink to={'/'} >MEDIUM</NavLink></h1>
         <div>
             <ul>
@@ -57,82 +148,12 @@ const handleClose = () => {
             <button className={nav.btn1}>
                 <NavLink to='/register'>Get started</NavLink>
             </button>
-            <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32 }}>G</Avatar>
-          </IconButton>
-        </Tooltip>
-        <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
-        <MenuItem onClick={handleClose}>
-        <Avatar />Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> <NavLink to='/save'>Library</NavLink>
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu>
+           
         </div>
     </header>
-    <Login open={open1} setOpen={setOpen1}/>
+    }
+   
+    {/* <Login open={open1} setOpen={setOpen1}/> */}
 
     
     </>

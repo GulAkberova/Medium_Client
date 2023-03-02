@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { data } from '../../api/data';
+import { setLogin } from '../../slice';
 function Register() {
+  // let isAuth=(useSelector(state=>state.Au))
+  // console.log(isAuth)
+  const navigate= useNavigate()
+  const dispatch= useDispatch()
   const [panel, SetPanel] = useState(true);
   const {
     register,
@@ -12,13 +19,21 @@ function Register() {
   const onSubmit = (index) => {
     data.getByPost('auth/login',index)
     .then((res)=>{
-      console.log(res)
+      console.log(res.token)
+      let token=res?.token;
+      let user= res?.user
      alert('Qeydiyyat olundu')
+     dispatch(setLogin({
+      user:user,
+      token:token
+     }))
+
+    
     // const access=res?.tokens?.access;
     // const refresh=res?.tokens?.refresh;
     // setAuth({index,access,refresh })
     
-    // navigate('/')
+    navigate('/home')
 
     })
     .catch(err=>{
@@ -28,6 +43,7 @@ function Register() {
 
   };
 
+  // console.log(isAuth)
 
   const onSubmitR = (index) => {
     data.getByPost('auth/register',index)
@@ -35,11 +51,13 @@ function Register() {
         // navigate("/email",{state:{email:res.email}});
         console.log(res)
 
+
       })
       .catch(err=>{
         console.log('err',err)
         alert('Email or password invalid')
       })
+      SetPanel(!panel)
   };
   return (
     <>
@@ -198,7 +216,7 @@ function Register() {
                       )}
                     </p>
 
-                    <label for="avatar">Choose a profile picture:</label>
+                    <label htmlFor="avatar">Choose a profile picture:</label>
 
 <input type="file"
        id="avatar" name="avatar"

@@ -9,10 +9,21 @@ import { Provider } from 'react-redux';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+const store=configureStore({
+  reducer:{
+    authReducer: authReducer
+  }
+})
+
+
 root.render(
     <BrowserRouter>
     <StyledEngineProvider injectFirst>
+    <Provider store={store}>
     <App />
+    </Provider>
     </StyledEngineProvider>
     </BrowserRouter>
 );

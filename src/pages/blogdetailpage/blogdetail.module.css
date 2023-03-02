@@ -9,6 +9,7 @@
 .detail_writer{
     width: 32%;
     padding: 60px 40px;
+    border-left: 1px solid rgb(165, 164, 164);
 }
 .blog_writer_header{
     display: flex;
