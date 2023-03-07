@@ -7,7 +7,6 @@ import authReducer from './slice'
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 

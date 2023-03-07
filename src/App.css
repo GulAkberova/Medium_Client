@@ -10,3 +10,8 @@
   box-sizing: border-box;
   font-family: 'Playfair Display', serif;
 }
+.backColor{
+  width: 100%;
+  height: calc(100vh + 100px);
+  background-color: #FFC017;
+}

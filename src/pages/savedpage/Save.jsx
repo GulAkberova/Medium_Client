@@ -7,47 +7,52 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import UserBlogsFilter from "../../components/userblogsFilter/UserBlogsFilter";
+import { useDispatch, useSelector } from "react-redux";
+import Moment from "react-moment";
+import { Link } from "react-router-dom";
+import { savedAdd } from "slice";
 function Save() {
-  const [value, setValue] = React.useState("1");
+  
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  let auth = useSelector((state) => state.authReducer);
+  console.log('saveeed arkadassss',auth.saved)
+  const dispatch=useDispatch()
+
+  const handleSaved=(item)=>{
+    dispatch(savedAdd(item))
+   
+   }
+
   return (
     <>
-      <section className={detail.detail_bigdiv}>
-        <div className={detail.detail_blogs}>
-          <div className={detail.writer_header_name}>
-            <h1>Reetesh Badlani</h1>
+     {
+     auth.saved.length ? auth.saved.map((i,key)=>(
+        <div className={blogs.blogs_mini_div} key={key}>
+        <div className={blogs.blogs_mini_text}>
+          <div className={blogs.blogs_mini_text_img}>
+          <img src={`http://localhost:5000/assets/${i.userPicturePath}`} />
+
+            <span>{i.firstName}</span>
           </div>
-          <Box
-            sx={{ width: "100%", typography: "body1" }}
-            className={blogs.blogs_header_div}
-          >
-            <TabContext value={value}>
-              <Box
-                sx={{ borderBottom: 1, borderColor: "divider" }}
-                className={blogs.blogs_header_filter}
-              >
-                <TabList
-                  onChange={handleChange}
-                  aria-label="lab API tabs example"
-                >
-                  <Tab label="Your List" value="1" />
-                  <Tab label="Saved List" value="2" />
-                  <Tab label="Highlights" value="3" />
-                </TabList>
-              </Box>
-              <TabPanel value="1"></TabPanel>
-              <TabPanel value="2"></TabPanel>
-              <TabPanel value="3"></TabPanel>
-            </TabContext>
-          </Box>
+          <h2><Link to={`/home/${i._id}`}>{i.title}</Link></h2>
+          <p>{i.description.slice(0,80)}...</p>
+          <div className={blogs.blogs_mini_text_read}>
+            <div>
+            <span> <Moment format="DD/MM/YYYY">{i.createdAt}</Moment></span>.
+
+            </div>
+            <i onClick={()=>handleSaved(i)} class= {
+              auth.saved.includes(i) ? "fa-solid fa-bookmark" :"fa-regular fa-bookmark"}></i>
+          </div>
         </div>
-        <div className={detail.detail_writer}>
-          <UserBlogsFilter />
+        <div className={blogs.blogs_mini_img}>
+        <img src={`http://localhost:5000/assets/${i.picturePath}`} />
+
         </div>
-      </section>
+      </div>
+
+      )):<p>Data yox</p>
+     }
     </>
   );
 }

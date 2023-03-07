@@ -3,8 +3,52 @@ import detail from '../../pages/blogdetailpage/blogdetail.module.css'
 import trend1 from '../../assets/images/trend1.jpeg'
 import blogs1 from '../../assets/images/blogs1.png'
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPost } from '../../slice';
+import Comments from '../../pages/commentpage/Comments';
+import Moment from 'react-moment';
 function BlogsDetail({detailPost}) {
-  // console.log(detailPost)
+
+  const [open1, setOpen1] = React.useState(false);
+  const handleOpen = () => setOpen1(true);
+
+  let auth = useSelector((state) => state.authReducer);
+  const loggedInUserId=auth.user._id
+  // const myObject = new Object();
+  // myObject["firstname"] = "Gareth";
+  // myObject["lastname"] = "Simpson";
+  // myObject["age"] = 21;
+  // console.log(myObject)
+  // const isLiked=Boolean(detailPost.likes[loggedInUserId])
+  const myLike=detailPost.likes
+  // console.log(Object.keys(myLike).length)
+  // const likeCount=Object.keys(myLike).length;
+  // console.log(likeCount)
+// console.log("logged",detailPost)
+  // console.log(detailPost._id)
+  let dispatch= useDispatch()
+  let id=detailPost._id
+  // console.log("id",id)
+  const sendGetRequest = async () => {
+    
+    const response = await fetch(`http://localhost:5000/post/${detailPost._id}/like`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: loggedInUserId }),
+    });
+    const updatedPost = await response.json();
+    console.log(updatedPost)
+    dispatch(setPost({ post: updatedPost }));
+  }
+   
+  const handleLiked=()=>{
+    sendGetRequest()
+
+  }
+  console.log(detailPost.likes)
 
   return (
     <>
@@ -12,31 +56,32 @@ function BlogsDetail({detailPost}) {
 
     <div className={detail.blog_writer_header}>
        <div className={detail.blog_writer_header_img}>
-       <img src={trend1}/>
+       
+
+       <img src={`http://localhost:5000/assets/${detailPost.userPicturePath}`} />
       
       <div>
         <h3>{detailPost.firstName} {detailPost.lastName}</h3>
-        <p>Mat 25, 2022 . <span>5 min read</span></p>
+        <span> <Moment format="DD/MM/YYYY">{detailPost.createdAt}</Moment></span>.
       </div>
        </div>
       
       <div className={detail.blog_writer_header_icon}>
      <ul>
       <li>
-      <i class="fa-solid fa-link"></i>
+      <i class="fa-brands fa-facebook"></i>
 
       </li>
       <li>
-      <i class="fa-solid fa-link"></i>
+      <i class="fa-brands fa-instagram"></i>
 
       </li>
       <li>
-      <i class="fa-solid fa-link"></i>
+      <i class="fa-brands fa-linkedin"></i>
 
       </li>
       <li>
-      <i class="fa-solid fa-link"></i>
-
+      <i class="fa-brands fa-youtube"></i>
       </li>
      </ul>
       </div>
@@ -44,27 +89,25 @@ function BlogsDetail({detailPost}) {
 
     </div>
     <div className={detail.blog_detail_header}>
-      <h1>{detailPost.description}</h1>
-      <p>We all learn from mistakes, and this rule applies to web designers as well. In this article, we will tell you what mistakes many of them make when creating user interface design.</p>
-      <p>Each of us has experience using web applications and visiting websites in open areas, under direct sunlight. And everything would be fine if the contrast of the font with the background allowed us to recognize words and numbers. However, most webmasters forget about these nuances for some reason. As a result, mobile users are forced to cover the screen with their hands or go into the shadows to somehow cope with the situation. Think twice before choosing a solid background for a gray font.</p>
-      <h3>#2 — Filling the whole screen</h3>
-      <p>Sometimes little doesn’t mean bad. When some web pages end up with a minimal amount of content, it’s not always wrong — the main thing is to distribute it evenly. Conversely, some webmasters are wary of free space and try to clutter it up by choosing larger fonts and stretching banners and images. It often turns out to be ridiculous. Don’t be like these webmasters, leave some space if there is not much content.</p>
+      <h1>{detailPost.title}</h1>
+       <p>{detailPost.description}</p>
+      
       <div className={detail.blog_detail_header_img}>
-      <img src={blogs1}/>
+      <img src={`http://localhost:5000/assets/${detailPost.picturePath}`} />
+
       </div>
-      <h3>#2 — Filling the whole screen</h3>
-      <p>Sometimes little doesn’t mean bad. When some web pages end up with a minimal amount of content, it’s not always wrong — the main thing is to distribute it evenly. Conversely, some webmasters are wary of free space and try to clutter it up by choosing larger fonts and stretching banners and images. It often turns out to be ridiculous. Don’t be like these webmasters, leave some space if there is not much content.</p>
     </div>
     <div className={detail.follow_div}>
       <ul>
-        <li><i class="fa-solid fa-hand"></i> 17</li>
+        <li onClick={()=>handleLiked()}><i className={ detailPost.likes ? "fa-solid fa-thumbs-up" :"fa-regular fa-thumbs-up"}></i> 17</li>
         <li>|</li>
-        <li><i class="fa-regular fa-comment"></i></li>
+        <li  onClick={handleOpen}><i className="fa-regular fa-comment"></i></li>
         <li>|</li>
         <li>...</li>
       </ul>
-
 </div>
+<Comments open={open1} setOpen={setOpen1} detailPost={detailPost}/>
+
     
     </>
   )

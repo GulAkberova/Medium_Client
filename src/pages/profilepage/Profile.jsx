@@ -8,10 +8,15 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import UserBlogsFilter from "../../components/userblogsFilter/UserBlogsFilter";
 import { useSelector } from "react-redux";
+import ProfileHome from "components/profilehome/ProfileHome";
+import ProfileAbout from "components/profileabout/ProfileAbout";
+import follow from '../../components/blogsWriterFollowing/writerFollowing.module.css'
+import Save from '../savedpage/Save'
 
 function Profile() {
   let auth = useSelector((state) => state.authReducer);
-  console.log("isauth", auth.user);
+  // console.log("isauth", auth.user.friends
+  // );
   const [value, setValue] = React.useState("1");
   const [user, setUser] = useState(null);
 
@@ -42,14 +47,40 @@ function Profile() {
                 >
                   <Tab label="Home" value="1" />
                   <Tab label="About" value="2" />
+                  <Tab label="Saved List" value="3" />
                 </TabList>
               </Box>
-              <TabPanel value="1"></TabPanel>
-              <TabPanel value="2"></TabPanel>
+              <TabPanel value="1"><ProfileHome/></TabPanel>
+              <TabPanel value="2"><ProfileAbout/></TabPanel>
+              <TabPanel value="3"><Save/></TabPanel>
             </TabContext>
           </Box>
         </div>
-        <div className={detail.detail_writer}></div>
+        <div className={detail.detail_writer}>
+          <div className={detail.detail_writer_img}>
+          <img src={`http://localhost:5000/assets/${ auth.user.picturePath}`}/>
+          <h4> {auth.user.firstName} {auth.user.lastName}</h4>
+         
+          </div>
+          <div className={follow.follow_bigdiv}>
+        <h3>Following</h3>
+        {
+          auth.user.friends && auth.user.friends.map((i,key)=>(
+            <div className={follow.follow_minidiv} key={key}>
+            <div>
+              {/* <p>{i._id}</p> */}
+            <img src={`http://localhost:5000/assets/${ i.picturePath}`}/>
+            <p>{i.firstName} {i.lastName}</p>
+            </div>
+            <p>...</p>
+        </div>
+
+          ))
+        }
+       
+      
+    </div>
+        </div>
       </section>
     </>
   );

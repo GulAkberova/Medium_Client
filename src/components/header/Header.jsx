@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLogout } from '../../slice';
 function Header() {
   let auth=(useSelector(state=>state.authReducer))
-  console.log('isauth',auth.token)
+  // console.log('isauth',auth.token)
   const [open1, setOpen1] = React.useState(false);
   const handleOpen = () => setOpen1(true);
 
@@ -139,21 +139,21 @@ const handleCloseLogout = () => {
         <h1><NavLink to={'/'} >MEDIUM</NavLink></h1>
         <div>
             <ul>
-                <li><NavLink >Our Story</NavLink></li>
+                <li><NavLink>Our Story</NavLink></li>
                 <li><NavLink to='/member' >Membership</NavLink></li>
                 <li><NavLink>Write</NavLink></li>
-                <li><NavLink onClick={handleOpen}>Sign in</NavLink></li>
+                <li><NavLink to='/test'>Sign in</NavLink></li>
 
             </ul>
             <button className={nav.btn1}>
-                <NavLink to='/register'>Get started</NavLink>
+                <NavLink onClick={handleOpen} >Get started</NavLink>
             </button>
            
         </div>
     </header>
     }
    
-    {/* <Login open={open1} setOpen={setOpen1}/> */}
+    <Login open={open1} setOpen={setOpen1}/>
 
     
     </>
