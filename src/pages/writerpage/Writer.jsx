@@ -14,6 +14,8 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setPosts, setUserPosts } from '../../slice'
 import WriterBlogsForYou from '../../components/userblogsForyou/WriterBlogsForYou'
+import follow from '../../components/blogsWriterFollowing/writerFollowing.module.css'
+import Moment from 'react-moment'
 function Writer() {
   const param=useParams()
   const dispatch= useDispatch()
@@ -57,7 +59,7 @@ sendGetRequest();
        <section className={detail.detail_bigdiv}>
    <div className={detail.detail_blogs}>
     <div className={detail.writer_header_name}>
-        <h1>Reetesh Badlani</h1>
+        <h1>{detailPost.firstName} {detailPost.lastName}</h1>
     </div>
     <Box sx={{ width: '100%', typography: 'body1' }} className={blogs.blogs_header_div}>
         
@@ -68,21 +70,65 @@ sendGetRequest();
           
   
               <Tab label="Home" value="1" />
-              <Tab label="List" value="2" />
-              <Tab label="About" value="3" />
+              <Tab label="About" value="2" />
             </TabList>
           </Box>
           <TabPanel value="1"><WriterBlogsForYou/></TabPanel>
-          <TabPanel value="2"></TabPanel>
-          <TabPanel value="3"></TabPanel>
+          <TabPanel value="2">
+
+
+          <h4>
+        {" "}
+        <i class="fa-solid fa-user"></i> &nbsp;{detailPost.firstName}{" "}
+        {detailPost.lastName}
+      </h4>
+      <h4>
+        {" "}
+        <i class="fa-solid fa-pen"></i> &nbsp;{detailPost.occupation}
+      </h4>
+      <h4>
+        {" "}
+        <i class="fa-solid fa-location-dot"></i> &nbsp;{detailPost.location}{" "}
+      </h4>
+      <h4>
+        {" "}
+        <i class="fa-solid fa-user-group"></i> &nbsp;Following:&nbsp;{" "}
+        {detailPost.friends.length}{" "}
+      </h4>
+      <h4>
+        {" "}
+        <i class="fa-solid fa-calendar-days"></i> &nbsp;Created:&nbsp;{" "}
+        <Moment format="DD/MM/YYYY">{detailPost.createdAt}</Moment>{" "}
+      </h4>
+          </TabPanel>
         </TabContext>
       </Box>
   
    
    </div>
    <div className={detail.detail_writer}>
-   {/* <BlogsWriter/> */}
-   <BlogsWriterFollowing detailPost={detailPost} setDetailPost={setDetailPost}/>
+          <div className={detail.detail_writer_img}>
+          <img src={`http://localhost:5000/assets/${detailPost.picturePath}`}/>
+          <h4> {detailPost.firstName} {detailPost.lastName}</h4>
+         
+          </div>
+          <div className={follow.follow_bigdiv}>
+        <h3>Following</h3>
+        {
+          detailPost.friends && detailPost.friends.map((i,key)=>(
+            <div className={follow.follow_minidiv} key={key}>
+            <div>
+            <img src={`http://localhost:5000/assets/${ i.picturePath}`}/>
+            <p>{i.firstName} {i.lastName}</p>
+            </div>
+            <p>...</p>
+        </div>
+
+          ))
+        }
+       
+      
+    </div>
    </div>
  
 

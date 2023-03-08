@@ -24,7 +24,7 @@ function AllRoute() {
         {!auth.token ? (
           <Route element={<PublicLayout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/login" element={<Test />} />
 
             {/* <Route path="/login" element={<Login />} /> */}
           </Route>

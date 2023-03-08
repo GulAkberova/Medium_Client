@@ -111,9 +111,9 @@ const handleCloseLogout = () => {
       <MenuItem onClick={handleClose}>
       <Avatar /><NavLink to='/profile'>Profile</NavLink>
       </MenuItem>
-      <MenuItem onClick={handleClose}>
+      {/* <MenuItem onClick={handleClose}>
         <Avatar /> <NavLink to='/save'>Library</NavLink>
-      </MenuItem>
+      </MenuItem> */}
       <Divider />
       <MenuItem onClick={handleClose}>
         <ListItemIcon>
@@ -140,13 +140,13 @@ const handleCloseLogout = () => {
         <div>
             <ul>
                 <li><NavLink>Our Story</NavLink></li>
-                <li><NavLink to='/member' >Membership</NavLink></li>
+                <li><NavLink>Membership</NavLink></li>
                 <li><NavLink>Write</NavLink></li>
-                <li><NavLink to='/test'>Sign in</NavLink></li>
+                <li> <NavLink onClick={handleOpen} >Get started</NavLink></li>
 
             </ul>
             <button className={nav.btn1}>
-                <NavLink onClick={handleOpen} >Get started</NavLink>
+            <NavLink to='/login'>Sign in</NavLink>
             </button>
            
         </div>

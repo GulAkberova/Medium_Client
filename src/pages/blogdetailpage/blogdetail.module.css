@@ -4,7 +4,7 @@
 }
 .detail_blogs{
     width: 70%;
-    padding: 60px 60px;
+    padding: 60px 70px;
     position: relative;
     /* border: 1px solid black; */
 }
@@ -147,6 +147,7 @@
 @media only screen and (max-width: 992px) {
     .detail_blogs{
        width: 100%;
+       padding: 60px 30px;
 
     }
  .detail_writer{
@@ -158,10 +159,7 @@
    }
 }
 @media only screen and (max-width: 700px) {
-    .detail_blogs{
-    padding: 60px 30px;
-
-    }
+   
    
 }
 @media only screen and (max-width: 660px) {

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import blogs from "../userblogs/userblogs.module.css";
-import blogs1 from "../../assets/images/blogs1.png";
-import trend1 from "../../assets/images/trend1.jpeg";
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -17,7 +15,7 @@ function UserBlogsForYou() {
    const sendGetRequest = async () => {
    try {
        const resp = await axios.get(`http://localhost:5000/post/`);
-       console.log(resp.data);
+      resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
        setProfile(resp.data)
 
    } catch (err) {

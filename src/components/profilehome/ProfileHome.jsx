@@ -19,7 +19,7 @@ function ProfileHome() {
     const sendGetRequest = async () => {
     try {
         const resp = await axios.get(`http://localhost:5000/post/${auth.user._id}/post`);
-        // console.log(resp.data);
+        resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setProfile(resp.data)
 
     } catch (err) {

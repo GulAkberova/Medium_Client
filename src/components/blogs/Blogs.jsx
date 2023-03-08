@@ -1,151 +1,72 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import blogs from "./blogs.module.css";
 import blogs1 from "../../assets/images/blogs1.png";
 import trend1 from "../../assets/images/trend1.jpeg";
+import { Link, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import Moment from 'react-moment';
+import { savedAdd } from 'slice';
+import detail from "../../pages/blogdetailpage/blogdetail.module.css";
+import Skeleton from 'react-loading-skeleton'
 function Blogs() {
+  let auth = useSelector((state) => state.authReducer);
+  console.log(auth.user)
+  const dispatch=useDispatch()
+  const [profile,setProfile]=useState([])
+  useEffect(() => {
+  
+   const sendGetRequest = async () => {
+   try {
+       const resp = await axios.get(`http://localhost:5000/post/`);
+      resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+       setProfile(resp.data)
+
+   } catch (err) {
+       // Handle Error Here
+       console.error(err);
+   }
+};
+
+sendGetRequest();
+ }, []);
+
+ const handleSaved=(item)=>{
+  dispatch(savedAdd(item))
+ 
+ }
   return (
-    <section className={blogs.blogs_big_div}>
-      <div className={blogs.blogs_mini_div}>
+  <>
+   {
+     profile && profile.map((i,key)=>(
+        <div className={blogs.blogs_mini_div} key={key}>
         <div className={blogs.blogs_mini_text}>
           <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
+          <img src={`http://localhost:5000/assets/${i.userPicturePath || <Skeleton />}`} />
+
+            <span>{i.firstName || <Skeleton/>}</span>
           </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
+          <h2><Link to={`/login`}>{i.title || <Skeleton />}</Link></h2>
+          <p>{i.description.slice(0,80)}...</p>
           <div className={blogs.blogs_mini_text_read}>
             <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
+            <span> <Moment format="DD/MM/YYYY">{i.createdAt}</Moment></span>.
+
             </div>
-            <i class="fa-regular fa-bookmark"></i>
+           <Link to='/login'> <i  class= {
+             "fa-regular fa-bookmark"}></i></Link>
           </div>
         </div>
         <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
+        <img src={`http://localhost:5000/assets/${i.picturePath}`} />
+
         </div>
       </div>
-      <div className={blogs.blogs_mini_div}>
-        <div className={blogs.blogs_mini_text}>
-          <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
-          </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
-          <div className={blogs.blogs_mini_text_read}>
-            <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
-            </div>
-            <i class="fa-regular fa-bookmark"></i>
-          </div>
-        </div>
-        <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
-        </div>
-      </div>
-      <div className={blogs.blogs_mini_div}>
-        <div className={blogs.blogs_mini_text}>
-          <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
-          </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
-          <div className={blogs.blogs_mini_text_read}>
-            <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
-            </div>
-            <i class="fa-regular fa-bookmark"></i>
-          </div>
-        </div>
-        <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
-        </div>
-      </div>
-      <div className={blogs.blogs_mini_div}>
-        <div className={blogs.blogs_mini_text}>
-          <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
-          </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
-          <div className={blogs.blogs_mini_text_read}>
-            <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
-            </div>
-            <i class="fa-regular fa-bookmark"></i>
-          </div>
-        </div>
-        <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
-        </div>
-      </div>
-      <div className={blogs.blogs_mini_div}>
-        <div className={blogs.blogs_mini_text}>
-          <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
-          </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
-          <div className={blogs.blogs_mini_text_read}>
-            <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
-            </div>
-            <i class="fa-regular fa-bookmark"></i>
-          </div>
-        </div>
-        <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
-        </div>
-      </div>
-      <div className={blogs.blogs_mini_div}>
-        <div className={blogs.blogs_mini_text}>
-          <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
-          </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
-          <div className={blogs.blogs_mini_text_read}>
-            <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
-            </div>
-            <i class="fa-regular fa-bookmark"></i>
-          </div>
-        </div>
-        <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
-        </div>
-      </div>
-      <div className={blogs.blogs_mini_div}>
-        <div className={blogs.blogs_mini_text}>
-          <div className={blogs.blogs_mini_text_img}>
-            <img src={trend1} />
-            <span>Praveen Seshadri</span>
-          </div>
-          <h2>The maze is in the mouse</h2>
-          <p>What ails Google. And how it can turn things around.</p>
-          <div className={blogs.blogs_mini_text_read}>
-            <div>
-            <span>15 Feb</span>.&nbsp; <span>4min read</span>
-            <button>Google</button>
-            </div>
-            <i class="fa-regular fa-bookmark"></i>
-          </div>
-        </div>
-        <div className={blogs.blogs_mini_img}>
-          <img src={blogs1} />
-        </div>
-      </div>
-    </section>
+
+      ))
+     }
+  
+  </>
   );
 }
 

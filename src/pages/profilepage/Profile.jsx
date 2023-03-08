@@ -23,6 +23,7 @@ function Profile() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <>
       <section className={detail.detail_bigdiv}>
@@ -60,6 +61,7 @@ function Profile() {
           <div className={detail.detail_writer_img}>
           <img src={`http://localhost:5000/assets/${ auth.user.picturePath}`}/>
           <h4> {auth.user.firstName} {auth.user.lastName}</h4>
+          {auth.user.occupation}
          
           </div>
           <div className={follow.follow_bigdiv}>

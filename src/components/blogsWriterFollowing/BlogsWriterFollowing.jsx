@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 function BlogsWriterFollowing({props}) {
  
   let auth = useSelector((state) => state.authReducer);
-  // console.log(props.detailPost,'yoxlamamaaaaaaa')
+
 
 
   return (

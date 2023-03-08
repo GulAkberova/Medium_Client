@@ -1,10 +1,10 @@
 .home_blogs_div_block{
-    padding: 60px 80px;
+    /* padding: 60px 80px; */
     display: flex;
     justify-content: space-between;
 }
 .home_blogs_div_none{
-    padding: 60px 80px;
+    /* padding: 60px 80px; */
     display: flex;
     flex-direction: column;
     display: none;
