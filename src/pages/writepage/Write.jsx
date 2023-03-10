@@ -22,10 +22,10 @@ function Write() {
     console.log(Object.fromEntries(formData))
 
 
-    data.getByPost('post',Object.fromEntries(formData))
+    data.getByPost1('post',Object.fromEntries(formData))
     .then((posts) =>{
       dispatch(setPosts({posts}))
-      navigate('/home')
+      // navigate('/home')
      
     })
     .catch(err=>{

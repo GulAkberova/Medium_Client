@@ -1,55 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react'
 import detail from '../../pages/blogdetailpage/blogdetail.module.css'
 import trend1 from '../../assets/images/trend1.jpeg'
 import blogs1 from '../../assets/images/blogs1.png'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPost } from '../../slice';
+import { savedAdd, setPost } from '../../slice';
 import Comments from '../../pages/commentpage/Comments';
 import Moment from 'react-moment';
+import { data } from 'api/data';
 function BlogsDetail({detailPost}) {
 
   const [open1, setOpen1] = React.useState(false);
   const handleOpen = () => setOpen1(true);
 
+
+  const[checkLike,setCheckLike]=useState(false)  
+  // const [like, setLike] = useState(detailPost.likes.length);
+
   let auth = useSelector((state) => state.authReducer);
   const loggedInUserId=auth.user._id
-  // const myObject = new Object();
-  // myObject["firstname"] = "Gareth";
-  // myObject["lastname"] = "Simpson";
-  // myObject["age"] = 21;
-  // console.log(myObject)
-  // const isLiked=Boolean(detailPost.likes[loggedInUserId])
   const myLike=detailPost.likes
-  // console.log(Object.keys(myLike).length)
-  // const likeCount=Object.keys(myLike).length;
-  // console.log(likeCount)
-// console.log("logged",detailPost)
   // console.log(detailPost._id)
   let dispatch= useDispatch()
-  let id=detailPost._id
-  // console.log("id",id)
-  const sendGetRequest = async () => {
+ 
+  // const sendGetRequest = async () => {
     
-    const response = await fetch(`http://localhost:5000/post/${detailPost._id}/like`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId: loggedInUserId }),
-    });
-    const updatedPost = await response.json();
-    console.log(updatedPost)
-    dispatch(setPost({ post: updatedPost }));
-  }
-   
-  const handleLiked=()=>{
-    sendGetRequest()
-
-  }
+  //   const response = await fetch(`http://localhost:5000/post/${detailPost._id}/like`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ userId: loggedInUserId }),
+  //   });
+  //   const updatedPost = await response.json();
+  //   console.log(updatedPost)
+  //   dispatch(setPost({ post: updatedPost }));
+  // }
+  let id=detailPost._id
+  let userId=detailPost.userId
   console.log(detailPost.likes)
+   
+  const handleLiked=(id,userId)=>{
+   if(checkLike){
+    data.getByPut(`/post/${id}/dislike`, { userId })
+    .then((res) => {
+      setCheckLike(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
+   }else{
+   data.getByPost1(`/post/${id}/like`,{userId})
+   .then((res) => {
+    setCheckLike(true);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+   }
+  //  setLike(checkLike ? like - 1 : like + 1);
+  }
   return (
     <>
 
@@ -84,6 +96,8 @@ function BlogsDetail({detailPost}) {
       <i class="fa-brands fa-youtube"></i>
       </li>
      </ul>
+     {/* <i onClick={()=>handleSaved(detailPost)} className= {
+              auth.saved.includes(detailPost) ? "fa-solid fa-bookmark" :"fa-regular fa-bookmark"}></i> */}
       </div>
 
 
@@ -99,7 +113,7 @@ function BlogsDetail({detailPost}) {
     </div>
     <div className={detail.follow_div}>
       <ul>
-        <li onClick={()=>handleLiked()}><i className={ detailPost.likes ? "fa-solid fa-thumbs-up" :"fa-regular fa-thumbs-up"}></i> 17</li>
+        <li onClick={()=>handleLiked(id,userId)}><i className={ checkLike ? "fa-solid fa-thumbs-up" :"fa-regular fa-thumbs-up"}></i> 17</li>
         <li>|</li>
         <li  onClick={handleOpen}><i className="fa-regular fa-comment"></i></li>
         <li>|</li>

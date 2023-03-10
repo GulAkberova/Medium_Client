@@ -18,7 +18,7 @@ export const data={
         })
         .catch(err=>{
             console.log('err',err)
-            if (err.response.status == 401) window.location.href = "/";
+            // if (err.response.status == 401) window.location.href = "/";
 
         })
 
@@ -46,7 +46,17 @@ export const data={
         });
         return response;
       },
-      getByDelete: async (url, id) => {
+      getByPost1: async (url, data) => {
+   
+      
+        let response = {};
+       
+        await axiosInstance.post(url, data).then((res) => {
+          response = res.data;
+        });
+        return response;
+      },
+  getByDelete: async (url, id) => {
         let response = {};
     
         await axiosInstance.delete(`${url}/${id}`).then((res) => {
@@ -55,9 +65,9 @@ export const data={
     
         return response;
       },
-      getByPut:async(url,id,data)=>{
+ getByPut:async(url,data)=>{
         let response = {};
-        await axiosInstance.put(`${url}/${id}`,data)
+        await axiosInstance.put(url,data)
         .then(res=>{
           response=res.data
         })

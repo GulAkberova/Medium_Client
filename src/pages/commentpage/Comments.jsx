@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { data } from "api/data";
 
 const style = {
   position: "absolute",
@@ -21,14 +22,20 @@ const style = {
 function Comments(props) {
   const handleClose = () => props.setOpen(false);
   const [check, setCheck] = useState(true);
-  const [value,setValue]=useState("")
+  const [comment,setValue]=useState("")
 
   let auth = useSelector((state) => state.authReducer);
-  // console.log(auth.post)
- 
-  // console.log(props.detailPost,'props')
 
   const handleSubmit=()=>{
+    const formData = new FormData();
+    console.log('detailPost',props.detailPost)
+    formData.append("comment", comment);
+    data.getByPut(`/post/${props.detailPost._id}/comments`,Object.fromEntries(formData))
+    .then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
 
   }
   return (
@@ -54,17 +61,10 @@ function Comments(props) {
                   </button>
                  
                 </div>
-                <h5>
-                  No Account? <a onClick={() => setCheck(false)}>Create one</a>
-                </h5>
               </div>
          
 
-            <p>
-              Click “Sign In” to agree to Medium’s <a>Terms of Service</a> and
-              acknowledge that
-              <br /> Medium’s <a>Privacy Policy</a> applies to you.
-            </p>
+          
           </Box>
         </Modal>
       </div>

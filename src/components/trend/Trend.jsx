@@ -7,18 +7,23 @@ import axios from "axios";
 import Moment from "react-moment";
 import { savedAdd } from "slice";
 import detail from "../../pages/blogdetailpage/blogdetail.module.css";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 function Trend() {
   let auth = useSelector((state) => state.authReducer);
+  const [isLoading, setIsLoading]=useState(false)
+
   console.log(auth.user);
   const dispatch = useDispatch();
   const [profile, setProfile] = useState([]);
   useEffect(() => {
     const sendGetRequest = async () => {
+      setIsLoading(true)
+
       try {
         const resp = await axios.get(`http://localhost:5000/post/`);
         resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setProfile(resp.data);
+        setIsLoading(false)
       } catch (err) {
         // Handle Error Here
         console.error(err);
@@ -36,7 +41,7 @@ function Trend() {
     <section className={trend.trend_big_div}>
       <h3>Trending on Medium</h3>
       <div className={trend.trend_mini_div}>
-        {profile &&
+        {  !isLoading ?
           profile.slice(0,6).map((i, key) => (
             <div className={trend.trend_div} key={key}>
               <h1>01</h1>
@@ -45,7 +50,7 @@ function Trend() {
                   {" "}
                   <img
                     src={`http://localhost:5000/assets/${
-                      i.userPicturePath || <Skeleton />
+                      i.userPicturePath
                     }`}
                   />
                   <span>
@@ -64,7 +69,33 @@ function Trend() {
                 </div>
               </div>
             </div>
-          ))}
+          )) :  profile.slice(0,6).map((i, key) => (
+            <SkeletonTheme color="#333" highlightColor="#444">
+            <div className={trend.trend_div} key={key}>
+              <h1>01</h1>
+              <div className={trend.trend_div_text}>
+                <div className={trend.trend_div_img}>
+                <Skeleton circle={true} height={30} width={30} />
+                  <span>
+                
+                  <Skeleton height={20} width={100} count={1} />
+                 
+                  </span>
+                </div>
+                <h2>    <Skeleton height={20} width={200} count={1} /></h2>
+                <div className={trend.trend_div_read}>
+                  <span>
+                  <Skeleton height={20} width={100} count={1} />
+                  </span>
+                  .
+                </div>
+              </div>
+            </div>
+            </SkeletonTheme>
+          ))
+        
+        
+        }
       </div>
     </section>
   );

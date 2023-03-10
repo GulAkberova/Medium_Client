@@ -93,7 +93,7 @@ sendGetRequest();
       <h4>
         {" "}
         <i class="fa-solid fa-user-group"></i> &nbsp;Following:&nbsp;{" "}
-        {detailPost.friends.length}{" "}
+        {/* {detailPost.friends.length()}{" "} */}
       </h4>
       <h4>
         {" "}
