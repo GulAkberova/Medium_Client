@@ -6,6 +6,9 @@ import axios from 'axios';
 import Moment from 'react-moment';
 import { savedAdd } from 'slice';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function UserBlogsForYou() {
   let auth = useSelector((state) => state.authReducer);
   const dispatch=useDispatch()
@@ -32,6 +35,16 @@ sendGetRequest();
 
  const handleSaved=(item)=>{
   dispatch(savedAdd(item))
+  toast.success("Information saved", {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
  
  }
   return (
@@ -90,7 +103,18 @@ sendGetRequest();
       ))
    
      }
-     
+        <ToastContainer
+                  position="top-center"
+                  autoClose={1000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick={false}
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
       
       </>
   )

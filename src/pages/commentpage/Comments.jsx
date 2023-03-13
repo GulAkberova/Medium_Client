@@ -7,6 +7,7 @@ import Modal from "@mui/material/Modal";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { data } from "api/data";
+import write from '../../pages/writepage/write.module.css'
 
 const style = {
   position: "absolute",
@@ -38,6 +39,8 @@ function Comments(props) {
     })
 
   }
+
+  console.log(props.detailPost, 'deeeeeeeeeeeeeeeeeeee')
   return (
     <>
       <div>
@@ -51,15 +54,34 @@ function Comments(props) {
           <Box sx={style} className={login.login_mini_div}>
            
               <div>
-                <h1>Welcome back</h1>
+                <h1>Comments</h1>
                 <div>
-                  <textarea onChange={(e)=>setValue(e.target.value)}>
+                <form className={write.writeFormComment} >
+                 
+                  <textarea 
+                   placeholder="Tell your story..."
+                   type="text"
+                   className={write.write_comment}
+                   onChange={(e)=>setValue(e.target.value)} >
 
                   </textarea>
-                  <button onClick={()=>handleSubmit()}>
+                  <button onClick={()=>handleSubmit()}  className={write.write_btn}>
                     Add
                   </button>
-                 
+                  
+                  </form>
+                </div>
+                <div>
+                  {
+                    props.detailPost.comments ? props.detailPost.comments.map((i,key)=>(
+                      <div>
+                        {i.comment}
+                        
+                      </div>
+                    ))
+                  : <p>Comment not found</p>
+                  }
+
                 </div>
               </div>
          

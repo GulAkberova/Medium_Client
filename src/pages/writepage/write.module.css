@@ -61,3 +61,16 @@
     cursor: pointer;
     font-size: 16px;
   }
+  .write_comment{
+      font-size: 15px;
+    padding: 10px 10px 50px 10px;
+    width: 50vw;
+  }
+  .write_btn{
+    background-color: teal;
+  }
+  .writeFormComment{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }

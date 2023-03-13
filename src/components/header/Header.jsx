@@ -35,6 +35,7 @@ function Header() {
     }
  };
  window.addEventListener('scroll', changeNavbarColor);
+ console.log(auth.user,'useeer')
 //  _________________________________________
 
 const [anchorEl, setAnchorEl] = React.useState(null);
@@ -70,7 +71,7 @@ const handleCloseLogout = () => {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
         >
-          <Avatar sx={{ width: 32, height: 32 }}>G</Avatar>
+          <Avatar sx={{ width: 32, height: 32 }}>{auth.user.firstName.slice(0,1)}</Avatar>
         </IconButton>
       </Tooltip>
       <Menu

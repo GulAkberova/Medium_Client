@@ -67,7 +67,7 @@ function Profile() {
           <div className={follow.follow_bigdiv}>
         <h3>Following</h3>
         {
-          auth.user.friends && auth.user.friends.map((i,key)=>(
+          auth.user.followers && auth.user.followers.map((i,key)=>(
             <div className={follow.follow_minidiv} key={key}>
             <div>
               {/* <p>{i._id}</p> */}

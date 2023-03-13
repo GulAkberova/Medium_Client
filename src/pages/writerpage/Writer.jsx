@@ -16,11 +16,13 @@ import { setPosts, setUserPosts } from '../../slice'
 import WriterBlogsForYou from '../../components/userblogsForyou/WriterBlogsForYou'
 import follow from '../../components/blogsWriterFollowing/writerFollowing.module.css'
 import Moment from 'react-moment'
+import WriteProfile from 'components/writeprofile/WriteProfile'
 function Writer() {
   const param=useParams()
   const dispatch= useDispatch()
   const[user,setUser]=useState([])
 
+  
   useEffect(() => {
    
     const sendGetRequest = async () => {
@@ -106,7 +108,7 @@ sendGetRequest();
   
    
    </div>
-   <div className={detail.detail_writer}>
+   {/* <div className={detail.detail_writer}>
           <div className={detail.detail_writer_img}>
           <img src={`http://localhost:5000/assets/${detailPost.picturePath}`}/>
           <h4> {detailPost.firstName} {detailPost.lastName}</h4>
@@ -129,7 +131,8 @@ sendGetRequest();
        
       
     </div>
-   </div>
+   </div> */}
+   <WriteProfile detailPost={detailPost}/>
  
 
   </section>
