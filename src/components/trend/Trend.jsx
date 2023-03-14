@@ -59,7 +59,7 @@ function Trend() {
                 <div className={trend.trend_div_img}>
                   {" "}
                   <img
-                    src={`http://localhost:5000/assets/${
+                    src={`https://medium-test.vercel.app/assets/${
                       i.userPicturePath
                     }`}
                   />

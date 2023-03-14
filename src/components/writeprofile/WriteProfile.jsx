@@ -61,7 +61,7 @@ console.log(auth.follow, 'follooooow')
     <>
      <div className={detail.detail_writer}>
    <div className={detail.blogs_writer_bigdiv}>
-   <img src={`http://localhost:5000/assets/${writeprofile.picturePath}`}/>
+   <img src={`https://medium-test.vercel.app/assets/${writeprofile.picturePath}`}/>
    <h3><Link to={`/writer/${writeprofile._id}`}>{writeprofile.firstName}</Link></h3>
    {/* <span>{writeprofile.followers.length} Followers</span> */}
    <p>{writeprofile.occupation}</p>

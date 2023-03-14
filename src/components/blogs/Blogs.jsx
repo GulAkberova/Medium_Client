@@ -56,7 +56,7 @@ function Blogs() {
         <div className={blogs.blogs_mini_div} key={key}>
         <div className={blogs.blogs_mini_text}>
           <div className={blogs.blogs_mini_text_img}>
-          <img src={`http://localhost:5000/assets/${i.userPicturePath}`} />
+          <img src={`https://medium-test.vercel.app/assets/${i.userPicturePath}`} />
 
             <span>{i.firstName}</span>
           </div>
@@ -72,7 +72,7 @@ function Blogs() {
           </div>
         </div>
         <div className={blogs.blogs_mini_img}>
-        <img src={`http://localhost:5000/assets/${i.picturePath}`} />
+        <img src={`https://medium-test.vercel.app/assets/${i.picturePath}`} />
 
         </div>
       </div>

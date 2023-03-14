@@ -59,7 +59,7 @@ function Profile() {
         </div>
         <div className={detail.detail_writer}>
           <div className={detail.detail_writer_img}>
-          <img src={`http://localhost:5000/assets/${ auth.user.picturePath}`}/>
+          <img src={`https://medium-test.vercel.app/assets/${ auth.user.picturePath}`}/>
           <h4> {auth.user.firstName} {auth.user.lastName}</h4>
           {auth.user.occupation}
          
@@ -71,7 +71,7 @@ function Profile() {
             <div className={follow.follow_minidiv} key={key}>
             <div>
               {/* <p>{i._id}</p> */}
-            <img src={`http://localhost:5000/assets/${ i.picturePath}`}/>
+            <img src={`https://medium-test.vercel.app/assets/${ i.picturePath}`}/>
             <p>{i.firstName} {i.lastName}</p>
             </div>
             <p>...</p>

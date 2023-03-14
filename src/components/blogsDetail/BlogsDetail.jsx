@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import detail from '../../pages/blogdetailpage/blogdetail.module.css'
 import trend1 from '../../assets/images/trend1.jpeg'
 import blogs1 from '../../assets/images/blogs1.png'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { liked, savedAdd, setPost } from '../../slice';
@@ -107,10 +107,10 @@ function BlogsDetail({detailPost}) {
        <div className={detail.blog_writer_header_img}>
        
 
-       <img src={`http://localhost:5000/assets/${detailPost.userPicturePath}`} />
+       <img src={`https://medium-test.vercel.app/assets/${detailPost.userPicturePath}`} />
       
       <div>
-        <h3>{detailPost.firstName} {detailPost.lastName}</h3>
+        <h3><Link to={`/writer/${userId}`}>{detailPost.firstName} {detailPost.lastName} </Link></h3>
         <span> <Moment format="DD/MM/YYYY">{detailPost.createdAt}</Moment></span>.
       </div>
        </div>
@@ -144,7 +144,7 @@ function BlogsDetail({detailPost}) {
        <p>{detailPost.description}</p>
       
       <div className={detail.blog_detail_header_img}>
-      <img src={`http://localhost:5000/assets/${detailPost.picturePath}`} />
+      <img src={`https://medium-test.vercel.app/assets/${detailPost.picturePath}`} />
 
       </div>
     </div>

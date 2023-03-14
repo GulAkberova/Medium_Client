@@ -1,8 +1,8 @@
 import NotFound from "pages/notfoundpage/NotFound";
 import Test from "pages/reglogtest/Test";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "../components/header/Header";
 import Hero from "../components/hero/Hero";
 import PrivateLayout from "../layout/PrivateLayout";
@@ -18,7 +18,11 @@ import Writer from "../pages/writerpage/Writer";
 
 function AllRoute() {
   let auth = useSelector((state) => state.authReducer);
-  // console.log("isauth", auth.token);
+ const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Routes>
