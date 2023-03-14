@@ -74,3 +74,66 @@
     flex-direction: column;
     align-items: flex-end;
   }
+
+
+  /* ________________________________ */
+  .writeFormCommentReply{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+  .write_commentReply{
+    font-size: 15px;
+    padding: 10px 10px 50px 10px;
+    width: 44vw;
+
+  }
+
+  /* __________________________________ */
+  .comment_view_bigdiv{
+    border-top: 1px solid rgb(196, 196, 196);
+    padding: 10px 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 320px;
+  }
+  .comment_view_div{
+    border-bottom: 1px solid rgba(193, 190, 190, 0.493);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 7px 0px;
+
+  }
+  .comment_view_div p{
+    text-align: left;
+  }
+  
+ .comment_view_div_ul{
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+   align-items: center;
+   padding: 0px 3px;
+}
+  .comment_view_div_ul ul{
+    display: flex;
+  }
+  .comment_view_div_ul ul li{
+    margin-right: 18px;
+  }
+  .comment_view_div_ul ul li i {
+    padding-right: 6px;
+  }
+  .comment_view_div_img{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .comment_view_div_img img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+  }

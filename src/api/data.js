@@ -1,16 +1,16 @@
 import { axiosInstance } from "./agent"
 export const data={
     getAll:async(url)=>{
-    // let tokens = localStorage.getItem("tokens");
+    let tokens = localStorage.getItem("tokens");
 
         let responsData=[]
 
         await axiosInstance.get(`/${url}/`
-        // ,{
-        //   headers: {
-        //     Authorization: "Bearer " + tokens,
-        //   },
-        // }
+        ,{
+          headers: {
+            Authorization: "Bearer " + tokens,
+          },
+        }
         )
         .then(res=>{
           
@@ -25,8 +25,13 @@ export const data={
         return responsData
     },
     getById:async (url,id)=>{
+      let tokens = localStorage.getItem("tokens");
         let response={}
-        await axiosInstance.get(`/${url}/${id}/`)
+        await axiosInstance.get(`/${url}/${id}/`  ,{
+          headers: {
+            Authorization: "Bearer " + tokens,
+          },
+        })
         .then(res=>{
             response=res.data
         })

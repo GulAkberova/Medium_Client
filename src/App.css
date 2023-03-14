@@ -12,6 +12,6 @@
 }
 .backColor{
   width: 100%;
-  height: calc(100vh + 100px);
+  height: calc(100vh + 200px);
   background-color: #FFC017;
 }

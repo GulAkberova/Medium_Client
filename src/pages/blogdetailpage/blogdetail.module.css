@@ -42,6 +42,12 @@
 .blog_writer_header_icon ul li{
    margin: 0px 5px;   
    color: gray;
+   cursor: pointer;
+   transition: 0.5s;
+}
+.blog_writer_header_icon ul li:hover i{
+    color: #496AEC;
+    transform: scale(1.1);
 }
 .blog_detail_header{
     padding: 40px 0px;
@@ -106,9 +112,9 @@
     font-size: 25px;
 }
 .follow_div{
-    padding: 3px 14px;
+    padding: 0px 24px;
     background-color: white;
-    border: 1px solid gray;
+    border: 1px solid rgba(174, 171, 171, 0.689);
     border-radius: 20px;
     position: fixed;
     bottom: 20px;
@@ -122,6 +128,7 @@
 }
 .follow_div ul li{
     padding: 10px;
+    cursor: pointer;
 }
 
 

@@ -35,17 +35,33 @@ sendGetRequest();
 
  const handleSaved=(item)=>{
   dispatch(savedAdd(item))
-  toast.success("Information saved", {
-    position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
- 
+  if(auth.saved.includes(item)){
+    toast.error("Information not saved", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+   
+   
+  }else{
+    toast.success("Information saved", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+   
+  }
+
  }
   return (
     <>

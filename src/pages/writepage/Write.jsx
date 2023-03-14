@@ -13,7 +13,8 @@ function Write() {
   let auth = useSelector((state) => state.authReducer);
  const navigate=useNavigate()
 
-  const handlePost = () => {
+  const handlePost = (e) => {
+    e.preventDefault()
     const formData = new FormData();
     formData.append("userId", auth.user._id);
     formData.append("description", desc);
@@ -25,12 +26,13 @@ function Write() {
     data.getByPost1('post',Object.fromEntries(formData))
     .then((posts) =>{
       dispatch(setPosts({posts}))
-      // navigate('/home')
+      navigate('/home')
      
     })
     .catch(err=>{
       console.log('err',err)
-      alert('Data yanlis')
+      alert('Data send')
+      navigate('/home')
     })
   };
   return (
@@ -66,7 +68,7 @@ function Write() {
             onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
-        <button className={write.writeSubmit} onClick={() => handlePost()}>
+        <button className={write.writeSubmit} onClick={(e) => handlePost(e)}>
           Publish
         </button>
         </form>

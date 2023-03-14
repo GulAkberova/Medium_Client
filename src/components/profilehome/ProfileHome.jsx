@@ -8,6 +8,8 @@ import { data } from 'api/data';
 import axios from 'axios';
 import Moment from 'react-moment'
 import { savedAdd } from 'slice';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function ProfileHome() {
     let auth = useSelector((state) => state.authReducer);
     // console.log("isauth", auth.user._id);
@@ -32,6 +34,32 @@ sendGetRequest();
   }, []);
   const handleSaved=(item)=>{
     dispatch(savedAdd(item))
+  if(auth.saved.includes(item)){
+    toast.error("Information not saved", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+   
+   
+  }else{
+    toast.success("Information saved", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+   
+  }
    
    }
     
@@ -64,6 +92,18 @@ sendGetRequest();
 
       )): <p>Data yox</p>
      }
+       <ToastContainer
+                  position="top-center"
+                  autoClose={1000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick={false}
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
     </div>
   )
 }

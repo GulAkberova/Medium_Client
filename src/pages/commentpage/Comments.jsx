@@ -24,10 +24,11 @@ function Comments(props) {
   const handleClose = () => props.setOpen(false);
   const [check, setCheck] = useState(true);
   const [comment,setValue]=useState("")
-
+ const [reply, setReply]=useState(false)
   let auth = useSelector((state) => state.authReducer);
 
-  const handleSubmit=()=>{
+  const handleSubmit=(e)=>{
+    e.preventDefault()
     const formData = new FormData();
     console.log('detailPost',props.detailPost)
     formData.append("comment", comment);
@@ -39,8 +40,11 @@ function Comments(props) {
     })
 
   }
+  const handleReply=()=>{
+    setReply(!reply)
+  }
 
-  console.log(props.detailPost, 'deeeeeeeeeeeeeeeeeeee')
+  // console.log(props.detailPost, 'deeeeeeeeeeeeeeeeeeee')
   return (
     <>
       <div>
@@ -71,8 +75,48 @@ function Comments(props) {
                   
                   </form>
                 </div>
-                <div>
+                <div className={write.comment_view_bigdiv}>
+                <div className={write.comment_view_div}>
+                  <div className={write.comment_view_div_img}>
+                    <img/>
+                    <h6>Jenna</h6>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem neque adipisci ad laudantium non quo fuga maxime at laborum, nobis sunt repellat, eaque nemo. Rerum sunt tempore quisquam reiciendis animi?</p>
+                  <div className={write.comment_view_div_ul}>
+                    <ul>
+                      <li><i className="fa-regular fa-thumbs-up"></i>100</li>
+                      <li><i className="fa-regular fa-comment"></i>2 replies</li>
+                    </ul>
+                    <button onClick={()=>handleReply()}>Reply</button>
+                    
+
+                  </div>
                   {
+                      reply ? <div>
+                         <form className={write.writeFormCommentReply} >
+                 
+                 <textarea 
+                  placeholder="Tell your story..."
+                  type="text"
+                  className={write.write_commentReply}
+                  onChange={(e)=>setValue(e.target.value)} >
+
+                 </textarea>
+                 <button onClick={(e)=>handleSubmit(e)}  className={write.write_btn}>
+                   Add
+                 </button>
+                 
+                 </form>
+
+
+                      </div>:<span></span>
+                    }
+
+
+                 </div>
+                
+
+                  {/* {
                     props.detailPost.comments ? props.detailPost.comments.map((i,key)=>(
                       <div>
                         {i.comment}
@@ -80,7 +124,7 @@ function Comments(props) {
                       </div>
                     ))
                   : <p>Comment not found</p>
-                  }
+                  } */}
 
                 </div>
               </div>

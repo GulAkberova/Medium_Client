@@ -32,7 +32,7 @@ function Login(props) {
         >
           <Box sx={style} className={login.login_mini_div}>
             {check ? (
-              <div>
+              <div className={login.login_mini_divv}>
                 <h1>Welcome back</h1>
                 <div>
                   <button>
@@ -141,7 +141,7 @@ function Login(props) {
                 </h5>
               </div>
             ) : (
-              <div>
+              <div className={login.login_mini_divv}>
                 <h1>Join Medium.</h1>
                 <div>
                   <button>

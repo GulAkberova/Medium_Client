@@ -5,9 +5,11 @@ const initialState={
     token:null,
     posts:[],
     userposts:[],
-    saved:[]
+    saved:[],
+    like:[],
+    follow:[],
 }
-// console.log('init',initialState.token)
+console.log('tokeeeen',initialState.token)
 
 export const authSlice=createSlice({
     name:"auth",
@@ -30,18 +32,18 @@ export const authSlice=createSlice({
               console.error("user friends non-existent :(");
             }
           },
-          setFollow: (state, action) => {
-            // let followersItem=state.user.following.find(q=>q.id === action.payload)
-
-            // if (followersItem=== undefined) {
-              state.user.following = [...state.user.following,action.payload];
-              console.log(state.user.following)
-            // } 
-          },
-          setUnFollow:(state,action)=>{
-            state.user.following=state.user.following.filter(q=>q.id !==action.payload)
-
-          },
+          setFollow:(state,action)=>{
+            let followItem=state.follow.find(q=>q._id === action.payload._id);
+            if(followItem === undefined){
+            state.follow = [...state.follow,action.payload];
+      
+            
+          }else{
+            state.follow=state.follow.filter(q=>q._id !==action.payload._id)
+      
+      
+          }
+        },
           setUserPosts: (state, action) => {
             state.userposts = action.payload.userposts;
             // console.log('useeersatte',state.userposts)
@@ -71,9 +73,21 @@ export const authSlice=createSlice({
 
           }
     },
+    liked:(state,action)=>{
+      let likedItem=state.like.find(q=>q._id === action.payload._id);
+      if(likedItem === undefined){
+      state.like = [...state.like,action.payload];
+
+      
+    }else{
+      state.like=state.like.filter(q=>q._id !==action.payload._id)
+
+
+    }
+},
   }
 })
 
-export const {setLogin, setLogout, setFriends, setPosts,setUnFollow,setFollow, setPost, setUserPosts,savedAdd } =
+export const {setLogin, setLogout, setFriends, setPosts,setFollow, setPost, setUserPosts,savedAdd, liked } =
   authSlice.actions;
 export default authSlice.reducer;

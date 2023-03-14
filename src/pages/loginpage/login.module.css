@@ -11,9 +11,9 @@
     text-align: center;
 }
 .login_mini_div h1{
-    padding: 20px 0px 40px 0px;
+    padding: 0px 0px 10px 0px;
 }
-.login_mini_div div{
+.login_mini_divv{
     display: flex;
     flex-direction: column;
     justify-content: center;

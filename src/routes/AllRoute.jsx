@@ -1,3 +1,4 @@
+import NotFound from "pages/notfoundpage/NotFound";
 import Test from "pages/reglogtest/Test";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -25,6 +26,7 @@ function AllRoute() {
           <Route element={<PublicLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Test />} />
+            <Route path="*" element={<NotFound/>}></Route>
 
             {/* <Route path="/login" element={<Login />} /> */}
           </Route>

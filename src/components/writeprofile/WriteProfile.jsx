@@ -9,9 +9,8 @@ function WriteProfile(props) {
     const [followed, setFollowed]=useState(false)
     const dispatch=useDispatch()
     let auth = useSelector((state) => state.authReducer);
-   
-      
     const[writeprofile, setWriteProfile]=useState([])
+    console.log('usereeer',props.detailPost.userId)
     useEffect(()=>{
         data.getById('users',props.detailPost.userId)
         .then(res=>{
@@ -24,17 +23,17 @@ function WriteProfile(props) {
 
     },[])
     
-console.log(writeprofile,'writeeeee')
+// console.log(writeprofile,'writeeeee')
     const handleFollow=(id)=>{
         const followUserId=auth.user._id
 
-        console.log('id',id,'follow', followUserId)
+        // console.log('id',id,'follow', followUserId)
       
       
             if(check){
               data.getByPost1(`users/unfollow`,{id,followUserId})
               .then((res)=>{
-                 dispatch(setUnFollow({id}))
+                 dispatch(setFollow({id}))
       
                 setCheck(false)
               }).catch((err) => console.log(err));
@@ -50,7 +49,7 @@ console.log(writeprofile,'writeeeee')
 
             // sendGetRequest()
       }
-
+console.log(auth.follow, 'follooooow')
     //   if(writeprofile.includes(auth.user._id)){
     //     setFollowed(true)
     //   }else{
