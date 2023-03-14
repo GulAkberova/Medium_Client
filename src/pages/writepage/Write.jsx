@@ -14,7 +14,6 @@ function Write() {
  const navigate=useNavigate()
 
   const handlePost = (e) => {
-    e.preventDefault()
     const formData = new FormData();
     formData.append("userId", auth.user._id);
     formData.append("description", desc);
@@ -34,6 +33,8 @@ function Write() {
       alert('Data send')
       navigate('/home')
     })
+    e.preventDefault()
+
   };
   return (
     <>
@@ -41,7 +42,7 @@ function Write() {
       {file && (
         <img className={write.writeImg} src={URL.createObjectURL(file)} alt="" />
       )}
-      <form className={write.writeForm} >
+      <form className={write.writeForm} onSubmit={(e) => handlePost(e)} >
         <div className={write.writeFormGroup}>
           <label htmlFor="fileInput">
             <i className="writeIcon fas fa-plus"></i>
@@ -68,7 +69,7 @@ function Write() {
             onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
-        <button className={write.writeSubmit} onClick={(e) => handlePost(e)}>
+        <button className={write.writeSubmit}  type="submit" >
           Publish
         </button>
         </form>
@@ -83,3 +84,5 @@ function Write() {
 }
 
 export default Write;
+
+

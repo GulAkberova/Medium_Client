@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import detail from "../blogdetailpage/blogdetail.module.css";
 import blogs from "../../components/userblogs/userblogs.module.css";
 import Box from "@mui/material/Box";
@@ -12,10 +12,11 @@ import ProfileHome from "components/profilehome/ProfileHome";
 import ProfileAbout from "components/profileabout/ProfileAbout";
 import follow from '../../components/blogsWriterFollowing/writerFollowing.module.css'
 import Save from '../savedpage/Save'
+import { data } from "api/data";
 
 function Profile() {
   let auth = useSelector((state) => state.authReducer);
-  // console.log("isauth", auth.user.friends
+  // console.log("isauth", auth.user.followers
   // );
   const [value, setValue] = React.useState("1");
   const [user, setUser] = useState(null);
@@ -24,6 +25,21 @@ function Profile() {
     setValue(newValue);
   };
 
+  const[fol,setFol]=useState([])
+  useEffect(()=>{
+    auth.user.following.forEach(element => {
+      console.log('element',element)
+      data.getAll(`/users/${element}`)
+      .then(res=>{
+      setFol([...[fol],res])
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    
+   });
+  },[])
+ console.log(fol)
   return (
     <>
       <section className={detail.detail_bigdiv}>
@@ -67,10 +83,9 @@ function Profile() {
           <div className={follow.follow_bigdiv}>
         <h3>Following</h3>
         {
-          auth.user.followers && auth.user.followers.map((i,key)=>(
+          fol && fol.map((i,key)=>(
             <div className={follow.follow_minidiv} key={key}>
             <div>
-              {/* <p>{i._id}</p> */}
             <img src={`https://medium-test.vercel.app/assets/${ i.picturePath}`}/>
             <p>{i.firstName} {i.lastName}</p>
             </div>
@@ -80,7 +95,14 @@ function Profile() {
           ))
         }
        
-      
+       {/* <div className={follow.follow_minidiv} >
+            <div>
+            <img src={`https://medium-test.vercel.app/assets/${ fol.picturePath}`}/>
+            <p>{fol.firstName} {fol.lastName}</p>
+            </div>
+            <p>...</p>
+        </div> */}
+        
     </div>
         </div>
       </section>

@@ -34,7 +34,8 @@ export const authSlice=createSlice({
           },
           setFollow:(state,action)=>{
             let followItem=state.follow.find(q=>q._id === action.payload._id);
-            if(followItem === undefined){
+            let followItemm=state.follow.find(q=>q.followUserId === action.payload.followUserId);
+            if((followItem && followItemm)=== undefined){
             state.follow = [...state.follow,action.payload];
       
             

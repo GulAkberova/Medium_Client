@@ -15,11 +15,34 @@ function BlogDetailPage() {
   const [detailPost, setDetailPost]=useState([])
   useEffect(() => {
     data.getById("post", param.id).then((res) => {
+      console.log(res,'reeeeeees')
       setDetailPost(res)
     });
   }, []);
-//  console.log(detailPost,'detaaa')
 let id=detailPost.userId
+// console.log(id,'iddddddddddddddddddddddddd')
+
+// ___________________________________________-------------------
+
+// const[writeprofile, setWriteProfile]=useState([])
+
+// useEffect(()=>{
+
+//     data.getById('users',id)
+//     .then((res)=>{
+//         setWriteProfile(res)
+//     })
+//     .catch((err)=>{
+//         console.log(err)
+//     })
+
+
+// },[])
+// console.log('writeeeeeer', writeprofile)
+
+// ___________________________________________________________
+
+
 // const isFriend=auth.user.friends.find((friend)=>friend._id === id)
 
   // const sendGetRequest = async () => {
@@ -61,6 +84,8 @@ let id=detailPost.userId
 
     </div> */}
  <WriteProfile detailPost={detailPost}/>
+
+ 
  
 
   </section>

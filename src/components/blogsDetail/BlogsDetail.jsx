@@ -150,7 +150,7 @@ function BlogsDetail({detailPost}) {
     </div>
     <div className={detail.follow_div}>
       <ul>
-        <li onClick={()=>handleLiked(id,userId)}><i className={ auth.like.includes(auth.user._id) ? "fa-solid fa-thumbs-up" :"fa-regular fa-thumbs-up"}></i> 17</li>
+        <li onClick={()=>handleLiked(id,userId)}><i className={ auth.like.includes(auth.user._id) ? "fa-solid fa-thumbs-up" :"fa-regular fa-thumbs-up"}></i> {auth.like.length}</li>
         <li>|</li>
         <li  onClick={handleOpen}><i className="fa-regular fa-comment"></i></li>
        
