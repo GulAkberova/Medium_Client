@@ -14,8 +14,7 @@ function BlogsWriter() {
       setDetailPost(res)
     });
   }, []);
-  console.log(detailPost.firstName
-    )
+  console.log(detailPost.firstName)
 let id=detailPost.userId
   return (
     <>

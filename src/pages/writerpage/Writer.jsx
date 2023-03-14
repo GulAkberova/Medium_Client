@@ -25,19 +25,26 @@ function Writer() {
   
   useEffect(() => {
    
-    const sendGetRequest = async () => {
-    try {
-        const resp = await axios.get(`http://localhost:5000/post/${param.id}/post`);
-        console.log(resp.data);
-       dispatch(setUserPosts({userposts: resp.data}))
+    // const sendGetRequest = async () => {
+    // try {
+    //     const resp = await axios.get(`http://localhost:5000/post/${param.id}/post`);
+    //     console.log(resp.data);
+    //    dispatch(setUserPosts({userposts: resp.data}))
 
-    } catch (err) {
-        // Handle Error Here
-        console.error(err);
-    }
-};
+    // } catch (err) {
+    //     // Handle Error Here
+    //     console.error(err);
+    // }
+// };
 
-sendGetRequest();
+// sendGetRequest();
+data.getAll(`/post/${param.id}/post`)
+.then((res)=>{
+  dispatch(setUserPosts({userposts: res}))
+})
+.catch((err)=>{
+  console.log(err)
+})
   }, []);
 
     const [value, setValue] = React.useState('1');

@@ -9,6 +9,7 @@ import Moment from 'react-moment';
 import { savedAdd } from 'slice';
 import detail from "../../pages/blogdetailpage/blogdetail.module.css";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { data } from "api/data";
 function Blogs() {
   let auth = useSelector((state) => state.authReducer);
   console.log(auth.user)
@@ -18,23 +19,30 @@ function Blogs() {
 
   useEffect(() => {
   
-   const sendGetRequest = async () => {
+  //  const sendGetRequest = async () => {
     setIsLoading(true)
 
-   try {
-       const resp = await axios.get(`http://localhost:5000/post/`);
-      resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-       setProfile(resp.data)
-       setIsLoading(false)
+  //  try {
+      //  const resp = await axios.get(`http://localhost:5000/post/`);
+       data.getAll('/post/')
+       .then((res)=>{
+        res.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setProfile(res)
+        setIsLoading(false)
+       })
+       .catch((err)=>{
+        console.log(err)
+       })
+      
 
 
-   } catch (err) {
-       // Handle Error Here
-       console.error(err);
-   }
-};
+  //  } catch (err) {
+  //      // Handle Error Here
+  //      console.error(err);
+  //  }
+// };
 
-sendGetRequest();
+// sendGetRequest();
  }, []);
 
  const handleSaved=(item)=>{

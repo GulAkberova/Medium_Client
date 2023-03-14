@@ -8,6 +8,7 @@ import Moment from "react-moment";
 import { savedAdd } from "slice";
 import detail from "../../pages/blogdetailpage/blogdetail.module.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { data } from "api/data";
 function Trend() {
   let auth = useSelector((state) => state.authReducer);
   const [isLoading, setIsLoading]=useState(false)
@@ -16,21 +17,30 @@ function Trend() {
   const dispatch = useDispatch();
   const [profile, setProfile] = useState([]);
   useEffect(() => {
-    const sendGetRequest = async () => {
+    // const sendGetRequest = async () => {
       setIsLoading(true)
 
-      try {
-        const resp = await axios.get(`http://localhost:5000/post/`);
-        resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        setProfile(resp.data);
+      // try {
+      //   const resp = await axios.get(`http://localhost:5000/post/`);
+      //   resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      //   setProfile(resp.data);
+      //   setIsLoading(false)
+      // } catch (err) {
+      //   // Handle Error Here
+      //   console.error(err);
+      // }
+      data.getAll('/post/')
+      .then((res)=>{
+        res.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setProfile(res);
         setIsLoading(false)
-      } catch (err) {
-        // Handle Error Here
-        console.error(err);
-      }
-    };
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    // };
 
-    sendGetRequest();
+    // sendGetRequest();
   }, []);
 
 

@@ -5,7 +5,7 @@ export const data={
 
         let responsData=[]
 
-        await axiosInstance.get(`/${url}/`
+        await axiosInstance.get(url
         ,{
           headers: {
             Authorization: "Bearer " + tokens,

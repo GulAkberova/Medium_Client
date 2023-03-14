@@ -8,6 +8,7 @@ import { savedAdd } from 'slice';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { data } from 'api/data';
 
 function UserBlogsForYou() {
   let auth = useSelector((state) => state.authReducer);
@@ -16,21 +17,31 @@ function UserBlogsForYou() {
   const [isLoading, setIsLoading]=useState(false)
   useEffect(() => {
   
-   const sendGetRequest = async () => {
+  //  const sendGetRequest = async () => {
     setIsLoading(true)
-   try {
-       const resp = await axios.get(`http://localhost:5000/post/`);
-      resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-       setProfile(resp.data)
+  //  try {
+  //      const resp = await axios.get(`http://localhost:5000/post/`);
+  //     resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  //      setProfile(resp.data)
+  //      setIsLoading(false)
+
+  //  } catch (err) {
+  //      // Handle Error Here
+  //      console.error(err);
+  //  }
+// };
+data.getAll('/post/')
+.then((res)=>{
+  res.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+       setProfile(res)
        setIsLoading(false)
 
-   } catch (err) {
-       // Handle Error Here
-       console.error(err);
-   }
-};
+})
+.catch((err)=>{
+  console.log(err)
+})
 
-sendGetRequest();
+// sendGetRequest();
  }, []);
 
  const handleSaved=(item)=>{

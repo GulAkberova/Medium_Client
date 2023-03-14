@@ -35,7 +35,7 @@ function Header() {
     }
  };
  window.addEventListener('scroll', changeNavbarColor);
- console.log(auth.user,'useeer')
+//  console.log(auth.user,'useeer')
 //  _________________________________________
 
 const [anchorEl, setAnchorEl] = React.useState(null);

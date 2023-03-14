@@ -18,19 +18,27 @@ function ProfileHome() {
    const [profile,setProfile]=useState([])
    useEffect(() => {
    
-    const sendGetRequest = async () => {
-    try {
-        const resp = await axios.get(`http://localhost:5000/post/${auth.user._id}/post`);
-        resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        setProfile(resp.data)
+    // const sendGetRequest = async () => {
+    // try {
+    //     const resp = await axios.get(`http://localhost:5000/post/${auth.user._id}/post`);
+    //     resp.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    //     setProfile(resp.data)
 
-    } catch (err) {
-        // Handle Error Here
-        console.error(err);
-    }
-};
+    // } catch (err) {
+    //     // Handle Error Here
+    //     console.error(err);
+    // }
+    data.getAll(`/post/${auth.user._id}/post`)
+    .then((res)=>{
+      res.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setProfile(res)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+// };
 
-sendGetRequest();
+// sendGetRequest();
   }, []);
   const handleSaved=(item)=>{
     dispatch(savedAdd(item))
