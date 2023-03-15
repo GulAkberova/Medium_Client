@@ -33,7 +33,7 @@ function WriteProfile(props) {
   
   const sendGetRequest = async () => {
     try {
-        const resp = await axios.patch(`http://localhost:5000/users/${auth.user._id}/${id}`);
+        const resp = await axios.put(`http://medium-client.vercel.app/users/${auth.user._id}/${id}`);
         // console.log(resp.data);
         dispatch(setFriends({friends:resp.data}))
     
@@ -44,7 +44,7 @@ function WriteProfile(props) {
     }
   }
   sendGetRequest()
-  console.log(auth.friend)
+  console.log(auth.friend,'frieennnn')
         // const followUserId=auth.user._id   
         //     if(check){
         //       data.getByPost1(`users/unfollow`,{id,followUserId})
